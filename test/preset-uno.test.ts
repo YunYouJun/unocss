@@ -1,5 +1,6 @@
 import { createGenerator, escapeSelector } from '@unocss/core'
 import presetUno from '@unocss/preset-uno'
+import { expect, test } from 'vitest'
 
 const targets = [
   '-gap-y-5',
@@ -433,17 +434,17 @@ test('targets', async() => {
     if (!css.includes(escapeSelector(i)))
       unmatched.push(i)
   }
-  expect(unmatched).toEqual([])
+  expect(unmatched).eql([])
   expect(css).toMatchSnapshot()
-  expect(css).toEqual(css2)
+  expect(css).eql(css2)
 })
 
 test('non-targets', async() => {
   const code = nonTargets.join(' ')
   const { css, matched } = await uno.generate(code)
 
-  expect(Array.from(matched)).toEqual([])
-  expect(css).toMatch('')
+  expect(Array.from(matched)).eql([])
+  expect(css).eq('')
 })
 
 test('containers', async() => {
@@ -457,6 +458,6 @@ test('containers', async() => {
   ]
   const { css, matched } = await uno.generate(new Set([...targets, ...nonTargets]))
 
-  expect(matched).toEqual(new Set(targets))
+  expect(matched).eql(new Set(targets))
   expect(css).toMatchSnapshot()
 })

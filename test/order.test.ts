@@ -1,4 +1,5 @@
 import { createGenerator } from '@unocss/core'
+import { describe, expect, test } from 'vitest'
 
 describe('order', () => {
   test('static', async() => {
@@ -10,7 +11,7 @@ describe('order', () => {
       presets: [],
     })
     const { css } = await uno.generate('foo')
-    expect(css).toContain('bar2')
+    expect(css).to.contain('bar2')
   })
 
   test('dynamic', async() => {
@@ -22,6 +23,6 @@ describe('order', () => {
       presets: [],
     })
     const { css } = await uno.generate('foo')
-    expect(css).toContain('bar2')
+    expect(css).to.contain('bar2')
   })
 })

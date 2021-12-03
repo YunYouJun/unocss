@@ -1,6 +1,7 @@
 import { createGenerator } from '@unocss/core'
 import presetIcons from '@unocss/preset-icons'
 import presetUno from '@unocss/preset-uno'
+import { describe, expect, test } from 'vitest'
 
 describe('preset-icons', () => {
   const fixture1 = `
@@ -16,7 +17,7 @@ describe('preset-icons', () => {
 
   test('fixture1', async() => {
     const { css, layers } = await uno.generate(fixture1)
-    expect(layers).toEqual(['icons', 'default'])
+    expect(layers).eql(['icons', 'default'])
     expect(css).toMatchSnapshot()
   })
 })

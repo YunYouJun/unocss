@@ -1,9 +1,9 @@
-import { remove } from 'fs-extra'
-import { runCli, cacheDir } from './utils'
+import { expect, it } from 'vitest'
+import { runCli } from './utils'
 
-beforeAll(async() => {
-  await remove(cacheDir)
-})
+// beforeAll(async() => {
+//   await remove(cacheDir)
+// })
 
 it('builds uno.css', async() => {
   const { output } = await runCli({
