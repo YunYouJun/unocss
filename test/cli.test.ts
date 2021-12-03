@@ -1,28 +1,31 @@
-import { expect, it } from 'vitest'
-import { runCli } from './utils'
+import fs from 'fs-extra'
+import { expect, it, beforeAll, describe } from 'vitest'
+import { cacheDir, runCli } from './utils'
 
-// beforeAll(async() => {
-//   await remove(cacheDir)
-// })
-
-it('builds uno.css', async() => {
-  const { output } = await runCli({
-    'views/index.html': '<div class="p-4 max-w-screen-md"></div>',
-  })
-
-  expect(output).toMatchSnapshot()
+beforeAll(async() => {
+  await fs.remove(cacheDir)
 })
 
-it('supports unocss.config.js', async() => {
-  const { output } = await runCli({
-    'views/index.html': '<div class="box"></div>',
-    'unocss.config.js': `
+describe('cli', () => {
+  it('builds uno.css', async() => {
+    const { output } = await runCli({
+      'views/index.html': '<div class="p-4 max-w-screen-md"></div>',
+    })
+
+    expect(output).toMatchSnapshot()
+  })
+
+  it('supports unocss.config.js', async() => {
+    const { output } = await runCli({
+      'views/index.html': '<div class="box"></div>',
+      'unocss.config.js': `
       import { defineConfig } from 'unocss'
       export default defineConfig({
         shortcuts: [{ box: 'max-w-7xl mx-auto bg-gray-100 rounded-md shadow-sm p-4' }]
       })
     `,
-  })
+    })
 
-  expect(output).toMatchSnapshot()
+    expect(output).toMatchSnapshot()
+  })
 })

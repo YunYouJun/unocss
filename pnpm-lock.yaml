@@ -57,7 +57,7 @@ importers:
       vite: ^2.6.14
       vite-plugin-inspect: ^0.3.11
       vite-plugin-pages: ^0.19.0-beta.6
-      vitest: ^0.0.6
+      vitest: ^0.0.7
       vue: ^3.2.23
       vue-router: ^4.0.12
     devDependencies:
@@ -114,7 +114,7 @@ importers:
       vite: 2.6.14
       vite-plugin-inspect: 0.3.11_vite@2.6.14
       vite-plugin-pages: 0.19.0-beta.6_vite@2.6.14
-      vitest: 0.0.6
+      vitest: 0.0.7
       vue: 3.2.23
       vue-router: 4.0.12_vue@3.2.23
 
@@ -5931,8 +5931,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.0.6:
-    resolution: {integrity: sha512-p7tXXyFYcfAp7rgQYGuCj3DWjFGgnE7fEsVY53jcegZ+uHRwToi7QiBLpC00Md7R07o7M6PRjk6QFJfaxvXvIQ==}
+  /vitest/0.0.7:
+    resolution: {integrity: sha512-32S08rrOq6zlB5fKpMshGOS+G1dkZIx5CmOIiZILCkgMMnKeeMXOqGnKggheU+LOIj8HpBZwHxlQeKG9xjK7NA==}
     hasBin: true
     dependencies:
       '@jest/test-result': 27.4.2
