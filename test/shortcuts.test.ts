@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-expressions */
 import { createGenerator } from '@unocss/core'
 import presetUno from '@unocss/preset-uno'
 import prettier from 'prettier/standalone'
 import parserCSS from 'prettier/parser-postcss'
-import { describe, test, expect } from 'vitest'
+import { describe, test, expect, spy } from 'vitest'
 
 describe('shortcuts', () => {
   const uno = createGenerator({
@@ -41,17 +42,16 @@ describe('shortcuts', () => {
     expect(css).toMatchSnapshot()
   })
 
-  // test('warn', async() => {
-  //   const warn = jest.spyOn(global.console, 'warn').mockImplementation()
-  //   const { css } = await uno.generate('bad-one')
-  //   expect(css).toMatchSnapshot()
+  test('warn', async() => {
+    const warn = spy(global.console, 'warn')
+    const { css } = await uno.generate('bad-one')
+    expect(css).toMatchSnapshot()
 
-  //   expect(warn).toBeCalledTimes(1)
-  //   expect(warn.mock.calls[0]).eql(['[unocss]', 'unmatched utility "unmatched" in shortcut "bad-one"'])
+    expect(warn).to.be.called
+    expect(warn.args[0]).eql(['[unocss]', 'unmatched utility "unmatched" in shortcut "bad-one"'])
 
-  //   warn.mockReset()
-  //   warn.mockRestore()
-  // })
+    warn.restore()
+  })
 
   test('merge transform-duplicated', async() => {
     const { css } = await uno.generate('transform-duplicated')
